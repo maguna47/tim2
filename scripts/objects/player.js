@@ -16,8 +16,6 @@ class Player extends GameObject {
     this.dy = 0; // y方向の速さ
     this.g = 1; // 重力加速度
 
-    this.jframe = 0;
-
     this.next_alive_shot_num = 0;　//次に打つ弾の番号
     //this.shot_x=new Array(10);  //打つ弾のx座標
     //this.shot_y=new Array(10);  //打つ弾のy座標
@@ -72,6 +70,12 @@ class Player extends GameObject {
     // y座標
     this.dy -= this.g;
     this.y += this.dy;
+
+    for(let i = 0; i < spike_x.length; i++) {
+      if(spike_x[i]-50 <= this.x && this.x <= spike_x[i]+50 && spike_y[i] <= this.y && this.y <= spike_y[i] + 50 && frameCount % 60 ==0) {
+        this.y += 100;
+      }
+    }
 
     this.adjustMove();
   }

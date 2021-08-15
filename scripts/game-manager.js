@@ -12,6 +12,11 @@ let timer5 = time5;
 
 let player_x, player_y;
 
+//トゲの個数
+let spike_num;
+//トゲとの接触フラグ
+let player_spike_touch = false;
+
 class GameManager {
   // ゲッター
   // 例えば get a() {return b} と設定すると this.a で b が帰ってくるようになる
@@ -205,6 +210,16 @@ class Status {
     }
 
     //トゲ判定
+    for(let i = 0; i < spike_x.length; i++) {
+      if(spike_x[i]-50 <= player_x && player_x <= spike_x[i]+50 && spike_y[i] <= player_y && player_y <= spike_y[i] + 50 && frameCount % 60 ==0) {
+        player_spike_touch = true;
+      }
+    }
+
+    if(player_spike_touch){
+      this.timer -= 3;
+      player_spike_touch = false;
+    }
   }
 
   display() {

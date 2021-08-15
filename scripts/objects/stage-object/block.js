@@ -5,8 +5,10 @@ class Block extends GameObject {
     this.h = h;
     lava_w = -10;
     lava_x = -10;
-    S_x = -10;
-    S_w = -10;
+    for(let i = 0; i < spike_x.length; i++) {
+      spike_x[i] = -100;
+      spike_y[i] = -100;
+    }
   }
 
   display() {
@@ -67,7 +69,8 @@ class MoveBlock extends GameObject {
   }
 }
 
-let S_x, S_w;
+const spike_x = [];
+const spike_y = [];
 class Spike extends GameObject {
   constructor(x, y) {
     super();
@@ -76,6 +79,8 @@ class Spike extends GameObject {
     this.y = y;
     this.h = 50;
     this.w = 50;
+    spike_x[spike_num] = x;
+    spike_y[spike_num] = y;
   }
 
   display() {
@@ -83,10 +88,6 @@ class Spike extends GameObject {
     triangle(this.x, this.y, this.x+this.w, this.y, this.x+this.w/2, this.y+this.h);
   }
 
-  update() {
-    S_x = this.x;
-    S_w = this.y;
-  }
 }
 
 let lava_x, lava_w;

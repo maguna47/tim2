@@ -13,6 +13,12 @@ class Stage4 extends Stage {
       this.moveBlock1 = this.createObj(MoveBlock, 700, 500, 50, 10, /*limit =*/50, 0);
       this.moveBlock2 = this.createObj(MoveBlock, 320, 170, 50, 10, /*limit =*/75, 0);
       this.moveBlock3 = this.createObj(MoveBlock, 450, 350, 50, 10, /*limit =*/170, 1);
+
+      spike_num++;
+      this.Spike4 = this.createObj(Spike, 200, 280);
+      spike_num++;
+      this.Spike5 = this.createObj(Spike, 250, 280);
+
   
       this.enemy1 = this.createObj(Enemy, 750, random(50,200));
       this.enemy2 = this.createObj(Enemy, 25, 600);
